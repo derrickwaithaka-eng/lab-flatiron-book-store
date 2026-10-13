@@ -1,4 +1,3 @@
-// 1. Starter data object (this is usually already provided at the top of your file)
 const bookStore = {
   name: "Flatiron Bookstore",
   location: "London",
@@ -24,18 +23,14 @@ const bookStore = {
   ]
 };
 
-// ==========================================
-// 2. PUT YOUR LAB CODE HERE (Below the object)
-// ==========================================
-
-// Step A: Select the header element and update its textContent
+// 1. Select the header element and update its textContent to the store name
 const bookStoreTitle = document.querySelector("#header");
 bookStoreTitle.textContent = bookStore.name;
 
-// Step B: Select the book list container
+// 2. Select the book list container
 const bookList = document.querySelector("#book-list");
 
-// Step C: Loop through the books array and render elements
+// 3. Loop through every book and render elements
 bookStore.books.forEach((book) => {
   // Create elements for each book
   const bookContainer = document.createElement("li");
@@ -48,11 +43,11 @@ bookStore.books.forEach((book) => {
   bookAuthor.textContent = book.author;
   bookImage.src = book.image;
 
-  // Append child elements to the bookContainer (li)
+  // Append elements together
   bookContainer.appendChild(bookTitle);
   bookContainer.appendChild(bookAuthor);
   bookContainer.appendChild(bookImage);
 
-  // Append the bookContainer to the main bookList (ul)
+  // Append to the main book list on the DOM
   bookList.appendChild(bookContainer);
 });
