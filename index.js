@@ -32,27 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Select the book list container
     const bookList = document.querySelector("#book-list");
-    bookList.innerHTML = ""; // Clear existing content
+    if (bookList) {
+        bookList.innerHTML = "";
 
-    // 3. Loop through every book and render elements
-    bookStore.books.forEach(book => {
-        const bookContainer = document.createElement("li");
-        const bookTitle = document.createElement("h3");
-        const bookAuthor = document.createElement("p");
-        const bookImage = document.createElement("img");
+        // 3. Loop through every book and render elements
+        bookStore.books.forEach(book => {
+            const bookContainer = document.createElement("li");
+            const bookTitle = document.createElement("h3");
+            const bookAuthor = document.createElement("p");
+            const bookImage = document.createElement("img");
 
-        bookTitle.textContent = book.title;
-        bookAuthor.textContent = book.author;
-        
-        // Use setAttribute so JSDOM doesn't prepend http://localhost to the image URL
-        bookImage.setAttribute("src", book.image);
-        bookImage.alt = book.title;
+            bookTitle.textContent = book.title;
+            bookAuthor.textContent = book.author;
+            
+            // Reverting back to direct property assignment which standard JSDOM expects
+            bookImage.src = book.image;
+            bookImage.alt = book.title;
 
-        // Append children to li, then li to ul
-        bookContainer.appendChild(bookTitle);
-        bookContainer.appendChild(bookAuthor);
-        bookContainer.appendChild(bookImage);
+            // Append elements
+            bookContainer.appendChild(bookTitle);
+            bookContainer.appendChild(bookAuthor);
+            bookContainer.appendChild(bookImage);
 
-        bookList.appendChild(bookContainer);
-    });
+            bookList.appendChild(bookContainer);
+        });
+    }
 });
