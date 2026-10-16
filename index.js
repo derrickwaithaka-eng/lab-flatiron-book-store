@@ -32,9 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Select the book list container
     const bookList = document.querySelector("#book-list");
-
-    // Clear any existing content just in case
-    bookList.innerHTML = "";
+    bookList.innerHTML = ""; // Clear existing content
 
     // 3. Loop through every book and render elements
     bookStore.books.forEach(book => {
@@ -45,15 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         bookTitle.textContent = book.title;
         bookAuthor.textContent = book.author;
-        bookImage.src = book.image;
+        
+        // Use setAttribute so JSDOM doesn't prepend http://localhost to the image URL
+        bookImage.setAttribute("src", book.image);
         bookImage.alt = book.title;
 
-        // Append children to li
+        // Append children to li, then li to ul
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
         bookContainer.appendChild(bookImage);
 
-        // Append li to ul
         bookList.appendChild(bookContainer);
     });
 });
