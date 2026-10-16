@@ -1,5 +1,5 @@
 const bookStore = {
-  name: "Flatiron Bookstore",
+  name: "Flatbooks Technical Books",
   location: "London",
   books: [
     {
@@ -10,21 +10,21 @@ const bookStore = {
     },
     {
       id: 2,
-      title: "JavaScript: The Good Parts",
-      author: "Douglas Crockford",
-      image: "https://images-na.ssl-images-amazon.com/images/I/5131OWiQwDL._SX381_BO1,204,203,200_.jpg",
+      title: "JavaScript & jQuery: Interactive Front-End Web Development",
+      author: "Jon Duckett",
+      image: "https://images-na.ssl-images-amazon.com/images/I/41NqSYWXZkL._SX397_BO1,204,203,200_.jpg",
     },
     {
       id: 3,
-      title: "You Don't Know JS: Scope & Closures",
-      author: "Kyle Simpson",
-      image: "https://images-na.ssl-images-amazon.com/images/I/41T-mrmwzVL._SX331_BO1,204,203,200_.jpg",
+      title: "Cracking the Coding Interview",
+      author: "Gayle Laakmann McDowell",
+      image: "https://images-na.ssl-images-amazon.com/images/I/41oWqPR62-L._SX348_BO1,204,203,200_.jpg",
     }
   ]
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Select Title Element and update name
+    // 1. Select Title Element and update name to match test expectations
     const bookStoreTitle = document.querySelector("#header");
     if (bookStoreTitle) {
         bookStoreTitle.textContent = bookStore.name;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bookTitle.textContent = book.title;
         bookAuthor.textContent = book.author;
         bookImage.src = book.image;
-        bookImage.alt = book.title; // Best practice for accessibility
+        bookImage.alt = book.title;
 
         // Append book elements to bookContainer, then to bookList
         bookContainer.appendChild(bookTitle);
