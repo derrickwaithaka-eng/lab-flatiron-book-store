@@ -24,7 +24,7 @@ const bookStore = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Select Title Element and update name to match test expectations
+    // 1. Select Title Element and update name
     const bookStoreTitle = document.querySelector("#header");
     if (bookStoreTitle) {
         bookStoreTitle.textContent = bookStore.name;
@@ -33,25 +33,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Select the book list container
     const bookList = document.querySelector("#book-list");
 
+    // Clear any existing content just in case
+    bookList.innerHTML = "";
+
     // 3. Loop through every book and render elements
     bookStore.books.forEach(book => {
-        // Create elements for each book
         const bookContainer = document.createElement("li");
         const bookTitle = document.createElement("h3");
         const bookAuthor = document.createElement("p");
         const bookImage = document.createElement("img");
 
-        // Assign textContent and image source
         bookTitle.textContent = book.title;
         bookAuthor.textContent = book.author;
         bookImage.src = book.image;
         bookImage.alt = book.title;
 
-        // Append book elements to bookContainer, then to bookList
+        // Append children to li
         bookContainer.appendChild(bookTitle);
         bookContainer.appendChild(bookAuthor);
         bookContainer.appendChild(bookImage);
 
+        // Append li to ul
         bookList.appendChild(bookContainer);
     });
 });
